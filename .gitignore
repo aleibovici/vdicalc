@@ -25,6 +25,9 @@ buildNumber.properties
 .classpath
 .project
 .vscode/
-vdicalc/.DS_Store
+
+#
+# OS Generated
+#
 .DS_Store
-vdicalc/src/.DS_Store
+.DS_Store?
