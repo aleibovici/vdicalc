@@ -112,12 +112,13 @@
             <artifactId>javax.mail-api</artifactId>
             <version>1.6.2</version>
         </dependency>
+        <!-- installing 3rd party JARs 
+            mvn install:install-file -Dfile=com.myvirtualcloud.vdicalc/vdicalc/lib/jgoogleanalytics__V0.4.jar 
+            -DgroupId=com.boxysystems -DartifactId=jgoogleanalytics -Dversion=0.4 -Dpackaging=jar -->
         <dependency>
             <groupId>com.boxysystems</groupId>
             <artifactId>jgoogleanalytics</artifactId>
             <version>0.4</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/jgoogleanalytics__V0.4.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
