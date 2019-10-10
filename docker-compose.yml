@@ -1,8 +1,6 @@
 version: "3"
 
 services:
-  # Desktop: http://localhost:10000/index.html?encoding=rgb32
-  # Options: http://localhost:10000/connect.html
   x11-bridge:
     image: "jare/x11-bridge"
     stdin_open: true

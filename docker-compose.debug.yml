@@ -1,12 +1,40 @@
-version: '2.1'
+version: "3"
 
 services:
+  x11-bridge:
+    image: "jare/x11-bridge"
+    stdin_open: true
+    tty: true
+    environment:
+      - MODE=tcp
+      - XPRA_HTML=yes
+      - DISPLAY=:14
+    volumes:
+      - x11-bridge-pub-keys:/etc/pub-keys
+      - x11-bridge-X11-unix:/tmp/.X11-unix
+    ports:
+      - 10000:10000
+
   com.myvirtualcloud.vdicalc:
     image: com.myvirtualcloud.vdicalc
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y
+    environment: 
+      - DISPLAY=:14
+      # - "JAVA_OPTS=-Djava.awt.headless=false -Dawt.useSystemAAFontSettings=lcd -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y"
+      - "JAVA_OPTS=-Djava.awt.headless=false -Dawt.useSystemAAFontSettings=lcd"
     ports:
       - 5005:5005
+      - 9229:9229
+    command: 
+      - "--inspect-brk=0.0.0.0"
+    volumes:
+      - x11-bridge-pub-keys:/etc/pub-keys
+      - x11-bridge-X11-unix:/tmp/.X11-unix
+    depends_on:
+      - x11-bridge
+
+volumes:
+  x11-bridge-pub-keys:
+  x11-bridge-X11-unix:
