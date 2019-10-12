@@ -17,7 +17,6 @@ services:
 
   com.myvirtualcloud.vdicalc:
     image: com.myvirtualcloud.vdicalc
-    build: .
     environment: 
       - DISPLAY=:14
       - "JAVA_OPTS=-Djava.awt.headless=false -Dawt.useSystemAAFontSettings=lcd"

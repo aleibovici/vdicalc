@@ -17,9 +17,6 @@ services:
 
   com.myvirtualcloud.vdicalc:
     image: com.myvirtualcloud.vdicalc
-    build:
-      context: .
-      dockerfile: Dockerfile
     environment: 
       - DISPLAY=:14
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=5858,server=y,suspend=y
