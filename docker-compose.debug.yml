@@ -22,13 +22,9 @@ services:
       dockerfile: Dockerfile
     environment: 
       - DISPLAY=:14
-      # - "JAVA_OPTS=-Djava.awt.headless=false -Dawt.useSystemAAFontSettings=lcd -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y"
-      - "JAVA_OPTS=-Djava.awt.headless=false -Dawt.useSystemAAFontSettings=lcd"
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=5858,server=y,suspend=y
     ports:
-      - 5005:5005
-      - 9229:9229
-    command: 
-      - "--inspect-brk=0.0.0.0"
+      - 5858:5858
     volumes:
       - x11-bridge-pub-keys:/etc/pub-keys
       - x11-bridge-X11-unix:/tmp/.X11-unix

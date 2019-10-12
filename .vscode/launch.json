@@ -5,14 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "type": "java",
+            "name": "Debug (Attach) - Remote",
             "request": "attach",
-            "port": 9229,
-            "address": "localhost",
-            "name": "Docker: Attach to Node",
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/run/",
-            "protocol": "inspector"
+            "hostName": "localhost",
+            "port": 5858
         },
         {
             "type": "java",
