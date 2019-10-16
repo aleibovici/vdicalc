@@ -16,7 +16,7 @@ services:
       - 10000:10000
 
   com.myvirtualcloud.vdicalc:
-    image: com.myvirtualcloud.vdicalc
+    image: andreleibovici/vdicalc:latest
     environment: 
       - DISPLAY=:14
       - "JAVA_OPTS=-Djava.awt.headless=false -Dawt.useSystemAAFontSettings=lcd"
