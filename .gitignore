@@ -31,3 +31,4 @@ buildNumber.properties
 #
 .DS_Store
 .DS_Store?
+vdicalc/src/main/resources/digicert.jks
