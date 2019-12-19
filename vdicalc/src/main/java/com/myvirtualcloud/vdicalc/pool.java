@@ -22,31 +22,32 @@ package com.myvirtualcloud.vdicalc;
  * @version $Revision: 1.0 $
  */
 public class pool {
-	
+
 	/**
 	 * Field count.
 	 */
 	@Deprecated
-	private int	count;				// number of pools
+	private int count; // number of pools
 
 	/**
 	 * Field vmcount.
 	 */
-	private int	vmcount;			// number of vms
+	private int vmcount; // number of vms
 
 	/**
 	 * Field vmconcurrentcount.
 	 */
-	
-	private int	vmconcurrentcount;	// number of concurrent vms
+
+	private int vmconcurrentcount; // number of concurrent vms
 
 	/**
 	 * Field vmspercpucore.
 	 */
-	private int	vmspercpucore;		// number of vms per CPU core
-	
+	private int vmspercpucore; // number of vms per CPU core
+
 	/**
 	 * Method getCount.
+	 * 
 	 * @return int
 	 */
 	public int getCount() {
@@ -54,44 +55,44 @@ public class pool {
 	}
 
 	/**
-	
-	 * @return the vmconcurrentcount */
+	 * 
+	 * @return the vmconcurrentcount
+	 */
 	public int getVmconcurrentcount() {
 		return vmconcurrentcount;
 	}
 
 	/**
-	 * @return the vmcount */
+	 * @return the vmcount
+	 */
 	public int getVmcount() {
 		return vmcount;
 	}
 
 	/**
-	
-	 * @return the vmspercpucore */
+	 * 
+	 * @return the vmspercpucore
+	 */
 	public int getVmspercpucore() {
 		return vmspercpucore;
 	}
 
 	/**
-	 * @param count
-	 *            the count to set
+	 * @param count the count to set
 	 */
 	public void setCount(Integer count) {
 		this.count = count;
 	}
 
 	/**
-	 * @param vmconcurrentcount
-	 *            the vmconcurrentcount to set
+	 * @param vmconcurrentcount the vmconcurrentcount to set
 	 */
 	public void setVmconcurrentcount(int vmconcurrentcount) {
 		this.vmconcurrentcount = vmconcurrentcount;
 	}
 
 	/**
-	 * @param vmcount
-	 *            the vmcount to set
+	 * @param vmcount the vmcount to set
 	 */
 	public void setVmcount(int vmcount) {
 		this.vmcount = vmcount;
@@ -104,13 +105,16 @@ public class pool {
 		this.vmspercpucore = vmspercpucore;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	/**
 	 * Method toString.
-	
-	 * @return String */
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		final StringBuilder builder = new StringBuilder(32);

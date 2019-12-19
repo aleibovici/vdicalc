@@ -67,16 +67,13 @@ public final class functions {
 	/**
 	 * Field OS.
 	 */
-	private static final String			OS			= System.getProperty(
-															"os.name")
-															.toLowerCase();				// System
-																							// OS
+	private static final String OS = System.getProperty("os.name").toLowerCase(); // System
+																					// OS
 
 	/**
 	 * Field SETTINGS.
 	 */
-	private static final ResourceBundle	SETTINGS	= ResourceBundle
-															.getBundle("DefaultSettings");
+	private static final ResourceBundle SETTINGS = ResourceBundle.getBundle("DefaultSettings");
 
 	/**
 	 * isLinux
@@ -85,8 +82,7 @@ public final class functions {
 	 * @return boolean
 	 */
 	public static boolean isLinux() {
-		return OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0
-				|| OS.indexOf("aix") > 0;
+		return OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0;
 	}
 
 	/**
@@ -115,55 +111,46 @@ public final class functions {
 	 * @param jTabbedPane_name
 	 * @param name
 	 */
-	void createVMPanel_Convert_To(JTabbedPane jTabbedPane_name,
-			final String name) {
+	void createVMPanel_Convert_To(JTabbedPane jTabbedPane_name, final String name) {
 
 		JTabbedPane j = new JTabbedPane(SwingConstants.TOP);
 		j = jTabbedPane_name;
 
 		if (name.equalsIgnoreCase("view")) {
 
-			vdicalc.functionsobj.jPanelComponentPropertyChange(j,
-					JComboBox.class, "vmvramcombo", true, null, 0);
+			vdicalc.functionsobj.jPanelComponentPropertyChange(j, JComboBox.class, "vmvramcombo", true, null, 0);
 
-			final String[] s = {"Linked", "Full"};
-			vdicalc.functionsobj.jPanelComponentPropertyChange(j,
-					JComboBox.class, "desktoppooltypecombo", true, s, 0);
+			final String[] s = { "Linked", "Full" };
+			vdicalc.functionsobj.jPanelComponentPropertyChange(j, JComboBox.class, "desktoppooltypecombo", true, s, 0);
 
 		} else if (name.equalsIgnoreCase("xen")) {
 
-			vdicalc.functionsobj.jPanelComponentPropertyChange(j,
-					JComboBox.class, "vmvramcombo", false, null, 0);
+			vdicalc.functionsobj.jPanelComponentPropertyChange(j, JComboBox.class, "vmvramcombo", false, null, 0);
 
-			final String[] s = {"Pooled", "Assigned"};
-			vdicalc.functionsobj.jPanelComponentPropertyChange(j,
-					JComboBox.class, "desktoppooltypecombo", true, s, 0);
-			
+			final String[] s = { "Pooled", "Assigned" };
+			vdicalc.functionsobj.jPanelComponentPropertyChange(j, JComboBox.class, "desktoppooltypecombo", true, s, 0);
+
 		} else if (name.equalsIgnoreCase("workspot")) {
-			
-			vdicalc.functionsobj.jPanelComponentPropertyChange(j,
-					JComboBox.class, "vmvramcombo", true, null, 0);
 
-			final String[] s = {"Linked", "Full"};
-			vdicalc.functionsobj.jPanelComponentPropertyChange(j,
-					JComboBox.class, "desktoppooltypecombo", true, s, 0);
-			
+			vdicalc.functionsobj.jPanelComponentPropertyChange(j, JComboBox.class, "vmvramcombo", true, null, 0);
+
+			final String[] s = { "Linked", "Full" };
+			vdicalc.functionsobj.jPanelComponentPropertyChange(j, JComboBox.class, "desktoppooltypecombo", true, s, 0);
+
 		}
 	}
 
 	/**
-	 * Populate components matching strings and component names. The input
-	 * string come from a BufferedReader object in the mainframe.
+	 * Populate components matching strings and component names. The input string
+	 * come from a BufferedReader object in the mainframe.
 	 * 
 	 * @param c
 	 * @param sCurrentLine
 	 * @since 1.0
-	 * @param parent
-	 *            String
+	 * @param parent String
 	 */
 	@SuppressWarnings("unchecked")
-	public void fileRead(Component c, final String parent,
-			final String sCurrentLine) {
+	public void fileRead(Component c, final String parent, final String sCurrentLine) {
 
 		final String[] tokens = sCurrentLine.split("[:]");
 
@@ -193,13 +180,11 @@ public final class functions {
 	 * 
 	 * @param c
 	 * @param bw
-	 * @param parent
-	 *            String
+	 * @param parent String
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public void fileWrite(final Component c, final String parent,
-			final BufferedWriter bw) throws IOException {
+	public void fileWrite(final Component c, final String parent, final BufferedWriter bw) throws IOException {
 		if (c instanceof JTextField) {
 			if (null != c.getName()) {
 				bw.write(parent);
@@ -233,9 +218,8 @@ public final class functions {
 		String googleAnalyticsTrackerID = null;
 		BufferedReader reader = null;
 		try {
-			
-			final URL url = new URL(
-					SETTINGS.getString("googleanalyticstracker.url"));
+
+			final URL url = new URL(SETTINGS.getString("googleanalyticstracker.url"));
 			reader = new BufferedReader(new InputStreamReader(url.openStream()));
 			googleAnalyticsTrackerID = reader.readLine().toLowerCase().trim();
 		} catch (MalformedURLException e1) {
@@ -260,8 +244,7 @@ public final class functions {
 	 */
 	public boolean isApplicationExpired() {
 		final Calendar expireDate = Calendar.getInstance();
-		expireDate.set(
-				Integer.valueOf(SETTINGS.getString("expirydateyy.setting")),
+		expireDate.set(Integer.valueOf(SETTINGS.getString("expirydateyy.setting")),
 				Integer.valueOf(SETTINGS.getString("expirydatemm.setting")),
 				Integer.valueOf(SETTINGS.getString("expirydatedd.setting")));
 		if (Calendar.getInstance().after(expireDate)) {
@@ -275,15 +258,11 @@ public final class functions {
 	 * 
 	 * @param eventType
 	 * @since 1.0
-	 * @param version
-	 *            String
-	 * @param trackerId
-	 *            String
+	 * @param version   String
+	 * @param trackerId String
 	 */
-	public void jGoogleAnalyticsTracker(final String eventType,
-			final String version, final String trackerId) {
-		final JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker(
-				"vdi_calculator", version, trackerId);
+	public void jGoogleAnalyticsTracker(final String eventType, final String version, final String trackerId) {
+		final JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("vdi_calculator", version, trackerId);
 		final FocusPoint focusPoint = new FocusPoint(eventType.toLowerCase());
 		tracker.trackAsynchronously(focusPoint);
 	}
@@ -299,9 +278,8 @@ public final class functions {
 	 * @param index
 	 **/
 	@SuppressWarnings("unchecked")
-	public void jPanelComponentPropertyChange(final JTabbedPane panel,
-			final Object objclass, final String name, final boolean enabled,
-			final String[] value, final int index) {
+	public void jPanelComponentPropertyChange(final JTabbedPane panel, final Object objclass, final String name,
+			final boolean enabled, final String[] value, final int index) {
 		JPanel jPanelTemp = null;
 		JComboBox<Object> jComboTemp = null;
 		JTextField jTextTemp = null;
@@ -395,15 +373,11 @@ public final class functions {
 			document.addTitle("VDI Calculator");
 			document.addAuthor("Leibovici. A");
 			document.addCreationDate();
-			final Font fontheader = FontFactory.getFont("Times-Roman", 12,
-					Font.BOLD | Font.UNDERLINE);
-			final Font fontcontent = FontFactory.getFont("Times-Roman", 11,
-					Font.NORMAL);
-			final LineSeparator line = new LineSeparator(1, 90, null,
-					Element.ALIGN_CENTER, -2);
+			final Font fontheader = FontFactory.getFont("Times-Roman", 12, Font.BOLD | Font.UNDERLINE);
+			final Font fontcontent = FontFactory.getFont("Times-Roman", 11, Font.NORMAL);
+			final LineSeparator line = new LineSeparator(1, 90, null, Element.ALIGN_CENTER, -2);
 
-			Paragraph paragraph = new Paragraph(
-					"VDI Calculator by Andre Leibovici");
+			Paragraph paragraph = new Paragraph("VDI Calculator by Andre Leibovici");
 			paragraph.setAlignment(Element.ALIGN_CENTER);
 			document.add(paragraph);
 			paragraph = new Paragraph("myvirtualcloud.net");
@@ -420,64 +394,56 @@ public final class functions {
 			PdfPCell cell = new PdfPCell(new Phrase("Count", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(String.valueOf(host.getCount()),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(host.getCount()), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Cores per Host", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					String.valueOf(host.getCorescount()), fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(host.getCorescount()), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Avg. Host CPU", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(String.valueOf(host.getCoremhz())
-					+ " MHz", fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(host.getCoremhz()) + " MHz", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Host Memory - No TPS", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(host.getMemoryNoTPS() + " GB",
-					fontcontent));
+			cell = new PdfPCell(new Phrase(host.getMemoryNoTPS() + " GB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Host Memory - TPS", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(host.getMemoryTPS() + " GB",
-					fontcontent));
+			cell = new PdfPCell(new Phrase(host.getMemoryTPS() + " GB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Local Disk", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(String.valueOf(host
-					.getLocalswapsize()) + " GB", fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(host.getLocalswapsize()) + " GB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Desktops per Host", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(String.valueOf(host.getVmcount()),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(host.getVmcount()), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Number of Clusters", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(String.valueOf(cluster.getCount()),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(cluster.getCount()), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 			document.add(table);
@@ -489,8 +455,7 @@ public final class functions {
 			if (brokertype.equalsIgnoreCase("view")) {
 				document.add(new Paragraph("View Infrastructure", fontheader));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				document.add(new Paragraph("XenDesktop Infrastructure",
-						fontheader));
+				document.add(new Paragraph("XenDesktop Infrastructure", fontheader));
 			}
 
 			table = new PdfPTable(2);
@@ -500,35 +465,29 @@ public final class functions {
 			cell = new PdfPCell(new Phrase("vCenter Servers", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(String.valueOf(view.getVccount()),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(view.getVccount()), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Connection Servers",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Connection Servers", fontcontent));
 				cell.setBorder(Rectangle.NO_BORDER);
 				table.addCell(cell);
-				cell = new PdfPCell(new Phrase(
-						String.valueOf(view.getCscount()), fontcontent));
+				cell = new PdfPCell(new Phrase(String.valueOf(view.getCscount()), fontcontent));
 				cell.setBorder(Rectangle.NO_BORDER);
 				table.addCell(cell);
 
 				cell = new PdfPCell(new Phrase("Security Servers", fontcontent));
 				cell.setBorder(Rectangle.NO_BORDER);
 				table.addCell(cell);
-				cell = new PdfPCell(new Phrase(
-						String.valueOf(view.getSscount()), fontcontent));
+				cell = new PdfPCell(new Phrase(String.valueOf(view.getSscount()), fontcontent));
 				cell.setBorder(Rectangle.NO_BORDER);
 				table.addCell(cell);
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("Delivery Controllers",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Delivery Controllers", fontcontent));
 				cell.setBorder(Rectangle.NO_BORDER);
 				table.addCell(cell);
-				cell = new PdfPCell(new Phrase(
-						String.valueOf(xen.getDdccount()), fontcontent));
+				cell = new PdfPCell(new Phrase(String.valueOf(xen.getDdccount()), fontcontent));
 				cell.setBorder(Rectangle.NO_BORDER);
 				table.addCell(cell);
 			}
@@ -547,110 +506,87 @@ public final class functions {
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 			cell = new PdfPCell(
-					new Phrase(String.valueOf(vdicalc.storageobj
-							.getUsablecapacity()) + " TB", fontcontent));
+					new Phrase(String.valueOf(vdicalc.storageobj.getUsablecapacity()) + " TB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
 				cell = new PdfPCell(new Phrase("Parent Capacity", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("Master Image Capacity",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Master Image Capacity", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					String.valueOf(vdicalc.storageobj
-							.getParentusablecapacity()) + " TB", fontcontent));
+			cell = new PdfPCell(
+					new Phrase(String.valueOf(vdicalc.storageobj.getParentusablecapacity()) + " TB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
 				cell = new PdfPCell(new Phrase("Replica Capacity", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("Private Clone Capacity",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Private Clone Capacity", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					String.valueOf(vdicalc.storageobj
-							.getReplicausablecapacity()) + " TB", fontcontent));
+			cell = new PdfPCell(
+					new Phrase(String.valueOf(vdicalc.storageobj.getReplicausablecapacity()) + " TB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
 				cell = new PdfPCell(new Phrase("Clone Capacity", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(
-						new Phrase("Snapshot Capacity", fontcontent));
+				cell = new PdfPCell(new Phrase("Snapshot Capacity", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					vdicalc.storageobj.cloneusablecapacity.toString()
-							+ " TB", fontcontent));
+			cell = new PdfPCell(new Phrase(vdicalc.storageobj.cloneusablecapacity.toString() + " TB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
 				cell = new PdfPCell(new Phrase("Clone Datastores", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("Snapshot Datastores",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Snapshot Datastores", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					String.valueOf(vdicalc.storageobj.datastorecount),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(vdicalc.storageobj.datastorecount), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Clone Datastore Size",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Clone Datastore Size", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("Snapshot Datastore Size",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Snapshot Datastore Size", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					String.valueOf(vdicalc.storageobj.datastoresize)
-							+ " GB", fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(vdicalc.storageobj.datastoresize) + " GB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Persistent Datastores",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Persistent Datastores", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
 				cell = new PdfPCell(new Phrase("vDisk Datastores", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(
-					new Phrase(
-							String.valueOf(vdicalc.storageobj.persistentdatastorecount),
-							fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(vdicalc.storageobj.persistentdatastorecount), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Persistent Datastore Size",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Persistent Datastore Size", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("vDisk Datastores Size",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("vDisk Datastores Size", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 			cell = new PdfPCell(
-					new Phrase(
-							String.valueOf(vdicalc.storageobj.persistentdatastoresize)
-									+ " GB", fontcontent));
+					new Phrase(String.valueOf(vdicalc.storageobj.persistentdatastoresize) + " GB", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 			document.add(table);
@@ -667,74 +603,58 @@ public final class functions {
 			cell = new PdfPCell(new Phrase("Total Frontend IOPS", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					String.valueOf(vdicalc.storageobj.getFrontendIOPS()),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(vdicalc.storageobj.getFrontendIOPS()), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			cell = new PdfPCell(new Phrase("Total Backend IOPS", fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					String.valueOf(vdicalc.storageobj.getBackendIOPS()),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(String.valueOf(vdicalc.storageobj.getBackendIOPS()), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Clone Frontend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Clone Frontend IOPS", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("Snapshot Frontend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Snapshot Frontend IOPS", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					storage.ClonefrontendIOPS.toString(), fontcontent));
+			cell = new PdfPCell(new Phrase(storage.ClonefrontendIOPS.toString(), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Clone Backend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Clone Backend IOPS", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("Snapshot Backend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Snapshot Backend IOPS", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(storage.ClonebackendIOPS.toString(),
-					fontcontent));
+			cell = new PdfPCell(new Phrase(storage.ClonebackendIOPS.toString(), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Persistent Frontend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Persistent Frontend IOPS", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("vDisk Frontend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("vDisk Frontend IOPS", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					storage.PersistentfrontendIOPS.toString(), fontcontent));
+			cell = new PdfPCell(new Phrase(storage.PersistentfrontendIOPS.toString(), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 
 			if (brokertype.equalsIgnoreCase("view")) {
-				cell = new PdfPCell(new Phrase("Persistent Backend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("Persistent Backend IOPS", fontcontent));
 			} else if (brokertype.equalsIgnoreCase("xen")) {
-				cell = new PdfPCell(new Phrase("vDisk Backend IOPS",
-						fontcontent));
+				cell = new PdfPCell(new Phrase("vDisk Backend IOPS", fontcontent));
 			}
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
-			cell = new PdfPCell(new Phrase(
-					storage.PersistentbackendIOPS.toString(), fontcontent));
+			cell = new PdfPCell(new Phrase(storage.PersistentbackendIOPS.toString(), fontcontent));
 			cell.setBorder(Rectangle.NO_BORDER);
 			table.addCell(cell);
 			document.add(table);
@@ -760,6 +680,7 @@ public final class functions {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	/**
@@ -775,8 +696,8 @@ public final class functions {
 	}
 
 	/**
-	 * Check and compare software version against current version. Returns false
-	 * if version is not current Returns true if version is current
+	 * Check and compare software version against current version. Returns false if
+	 * version is not current Returns true if version is current
 	 * 
 	 * @param version
 	 * @return Boolean

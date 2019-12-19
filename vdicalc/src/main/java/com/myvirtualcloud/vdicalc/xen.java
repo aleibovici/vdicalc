@@ -22,114 +22,114 @@ package com.myvirtualcloud.vdicalc;
  * @version $Revision: 1.0 $
  */
 public class xen {
-    /**
-     * Field ddccount.
-     */
-    private static int Ddccount; // n Delivery Controllers
+        /**
+         * Field ddccount.
+         */
+        private static int Ddccount; // n Delivery Controllers
 
-    /**
-     * Calculate number of Delivery Controllers
-     * 
-     * @param vmcount
-     * @since 2.0
-     * @return int
-     */
-    public static int calculateDeliveryControllerCount(int vmcount) {
-        int itmp = 0;
-        Float f = (vmcount / 2000.00F);
-        f = (float) Math.ceil(f); // round up to next Integer
-        f++; // add 1 additional broker for redundancy
-        itmp = f.intValue(); // convert to Integer
-        return itmp;
-    }
+        /**
+         * Calculate number of Delivery Controllers
+         * 
+         * @param vmcount
+         * @since 2.0
+         * @return int
+         */
+        public static int calculateDeliveryControllerCount(int vmcount) {
+                int itmp = 0;
+                Float f = (vmcount / 2000.00F);
+                f = (float) Math.ceil(f); // round up to next Integer
+                f++; // add 1 additional broker for redundancy
+                itmp = f.intValue(); // convert to Integer
+                return itmp;
+        }
 
-    /**
-     * Calculate XenDesktop memory requirements for deployment
-     * 
-     * @param deliveryControllerCount
-     * @param vCenterServerCount
-     * 
-     * 
-     * @return int
-     */
-    public static int calculateXenMemory(int deliveryControllerCount, int vCenterServerCount) {
+        /**
+         * Calculate XenDesktop memory requirements for deployment
+         * 
+         * @param deliveryControllerCount
+         * @param vCenterServerCount
+         * 
+         * 
+         * @return int
+         */
+        public static int calculateXenMemory(int deliveryControllerCount, int vCenterServerCount) {
 
-        final int dc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.controller.memory.default")) //$NON-NLS-1$
-                * deliveryControllerCount;
-        final int vc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.vcenter.memory.default")) //$NON-NLS-1$
-                * vCenterServerCount;
+                final int dc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.controller.memory.default")) //$NON-NLS-1$
+                                * deliveryControllerCount;
+                final int vc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.vcenter.memory.default")) //$NON-NLS-1$
+                                * vCenterServerCount;
 
-        return dc + vc;
+                return dc + vc;
 
-    }
+        }
 
-    /**
-     * Calculate XenDesktop storage requirements for deployment
-     * 
-     * @param deliveryControllerCount
-     * @param vCenterServerCount
-     * 
-     * 
-     * @return int
-     */
-    public static int calculateXenStorage(int deliveryControllerCount, int vCenterServerCount) {
+        /**
+         * Calculate XenDesktop storage requirements for deployment
+         * 
+         * @param deliveryControllerCount
+         * @param vCenterServerCount
+         * 
+         * 
+         * @return int
+         */
+        public static int calculateXenStorage(int deliveryControllerCount, int vCenterServerCount) {
 
-        final int dc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.controller.storage.default")) //$NON-NLS-1$
-                * deliveryControllerCount;
-        final int vc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.vcenter.storage.default")) //$NON-NLS-1$
-                * vCenterServerCount;
+                final int dc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.controller.storage.default")) //$NON-NLS-1$
+                                * deliveryControllerCount;
+                final int vc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.vcenter.storage.default")) //$NON-NLS-1$
+                                * vCenterServerCount;
 
-        return dc + vc;
+                return dc + vc;
 
-    }
+        }
 
-    /**
-     * Calculate XenDesktop vCPU requirements for deployment
-     * 
-     * @param deliveryControllerCount
-     * @param vCenterServerCount
-     * 
-     * 
-     * @return int
-     */
-    public static int calculateXenvCPU(int deliveryControllerCount, int vCenterServerCount) {
+        /**
+         * Calculate XenDesktop vCPU requirements for deployment
+         * 
+         * @param deliveryControllerCount
+         * @param vCenterServerCount
+         * 
+         * 
+         * @return int
+         */
+        public static int calculateXenvCPU(int deliveryControllerCount, int vCenterServerCount) {
 
-        final int dc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.controller.vcpu.default")) //$NON-NLS-1$
-                * deliveryControllerCount;
-        final int vc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.vcenter.vcpu.default")) //$NON-NLS-1$
-                * vCenterServerCount;
+                final int dc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.controller.vcpu.default")) //$NON-NLS-1$
+                                * deliveryControllerCount;
+                final int vc = Integer.parseInt(vdicalc.DEFAULTS.getString("xen.vcenter.vcpu.default")) //$NON-NLS-1$
+                                * vCenterServerCount;
 
-        return dc + vc;
+                return dc + vc;
 
-    }
+        }
 
-    /**
-     * @return the ddccount
-     */
-    public static int getDdccount() {
-        return Ddccount;
-    }
+        /**
+         * @return the ddccount
+         */
+        public static int getDdccount() {
+                return Ddccount;
+        }
 
-    /**
-     * @param ddccount the ddccount to set
-     */
-    public static void setDdccount(Integer ddccount) {
-        xen.Ddccount = ddccount;
-	}
+        /**
+         * @param ddccount the ddccount to set
+         */
+        public static void setDdccount(Integer ddccount) {
+                xen.Ddccount = ddccount;
+        }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	/**
-	 * Method toString.
-	 * 
-	 * @return String
-	 **/
-	@Override
-	public String toString() {
-		return "Xen []";
-	}
+        /*
+         * (non-Javadoc)
+         * 
+         * @see java.lang.Object#toString()
+         */
+        /**
+         * Method toString.
+         * 
+         * @return String
+         **/
+        @Override
+        public String toString() {
+                return "Xen []";
+        }
 
 }

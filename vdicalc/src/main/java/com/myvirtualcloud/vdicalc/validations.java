@@ -28,7 +28,7 @@ public class validations {
 	 * 
 	 * @param str
 	 * @since 1.0
-	 * @return boolean 
+	 * @return boolean
 	 **/
 	public boolean equalNumeric(String str) {
 		try {
@@ -41,11 +41,14 @@ public class validations {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	/**
 	 * Method toString.
+	 * 
 	 * @return String
 	 */
 	@Override
@@ -54,7 +57,5 @@ public class validations {
 		builder.append("Validations []");
 		return builder.toString();
 	}
-
-
 
 }

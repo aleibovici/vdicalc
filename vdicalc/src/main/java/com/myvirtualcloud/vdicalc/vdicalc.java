@@ -55,6 +55,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
+
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -66,7 +67,7 @@ import net.miginfocom.swing.MigLayout;
 public class vdicalc extends JFrame implements ActionListener, FocusListener {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Field comboHeight.
 	 */
@@ -285,7 +286,8 @@ public class vdicalc extends JFrame implements ActionListener, FocusListener {
 	/**
 	 * Field coressocketcombovalues.
 	 */
-	static String[] coressocketcombovalues = { "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "24", "32", "64" };
+	static String[] coressocketcombovalues = { "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "24", "32",
+			"64" };
 	/**
 	 * Field coresocketscombo.
 	 */
@@ -376,7 +378,8 @@ public class vdicalc extends JFrame implements ActionListener, FocusListener {
 	/**
 	 * Field storageblockdeduplicationratiocombo.
 	 */
-	static JComboBox<String> storageblockdeduplicationratiocombo = new JComboBox<>(storageblockdeduplicationratiocombovalues);
+	static JComboBox<String> storageblockdeduplicationratiocombo = new JComboBox<>(
+			storageblockdeduplicationratiocombovalues);
 	/**
 	 * Field storagecachereadratiocombovalues.
 	 */
@@ -447,7 +450,7 @@ public class vdicalc extends JFrame implements ActionListener, FocusListener {
 		 */
 		if (SETTINGS.getString("googleanalyticstracker.setting").equalsIgnoreCase("on")) {
 			String GoogleAnalyticsTrackers = functionsobj.getGoogleAnalyticsTrackers();
-			List<String> GoogleAnalyticsTrackersIDs = Arrays.asList(GoogleAnalyticsTrackers.split(","));	
+			List<String> GoogleAnalyticsTrackersIDs = Arrays.asList(GoogleAnalyticsTrackers.split(","));
 			for (int i = 0; i < GoogleAnalyticsTrackersIDs.size(); i++) {
 				functionsobj.jGoogleAnalyticsTracker("AppLoad", SETTINGS.getString("googleanalyticstracker.version"),
 						GoogleAnalyticsTrackersIDs.get(i).toUpperCase());

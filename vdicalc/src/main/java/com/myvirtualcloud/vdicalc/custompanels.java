@@ -770,7 +770,7 @@ public class custompanels extends JPanel implements FocusListener, ActionListene
 																														// physical
 																														// core
 		String[] vmcorecombovalues = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-				"16", "17", "18", "19", "20"};
+				"16", "17", "18", "19", "20" };
 		final JComboBox<String> vmcorecombo = new JComboBox<>(vmcorecombovalues);
 		final JLabel vmdeltaIOtxtlabel = new JLabel(vdicalc.MESSAGES.getString("vmdeltaIOlinked.view"),
 				SwingConstants.LEFT);

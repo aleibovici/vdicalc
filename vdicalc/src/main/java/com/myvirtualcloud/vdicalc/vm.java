@@ -178,10 +178,11 @@ public class vm {
 	 * 
 	 * @param vmfullclonesize
 	 * @param vmrefreshrate
-	
+	 * 
 	 * @since 1.0
-	
-	 * @return int */
+	 * 
+	 * @return int
+	 */
 	public int calculateDeltaSize(int vmfullclonesize, int vmrefreshrate) {
 
 		final int i = (vmfullclonesize * vmrefreshrate) / 100;
@@ -190,143 +191,150 @@ public class vm {
 	}
 
 	/**
-	 * Define total storage utilized by a single virtual desktop. The
-	 * calculation is done by summing up multiple pre-calculated values. This
-	 * method will return an integer with any point or value checks.
+	 * Define total storage utilized by a single virtual desktop. The calculation is
+	 * done by summing up multiple pre-calculated values. This method will return an
+	 * integer with any point or value checks.
 	 * 
-	 * @param vmfullclonesize
-	 *            full clone disk size
-	 * @param vmdeltasize
-	 *            linked clones delta disk size
-	 * @param vmpersistentdisksize
-	 *            persistent disk size
-	 * @param vmdisposabledisksize
-	 *            disposable disk size
-	 * @param vmlogsize
-	 *            log size
-	 * @param vmswapsize
-	 *            vswap size
-	 * @param vmvideoswapsize
-	 *            video vswap size
+	 * @param vmfullclonesize      full clone disk size
+	 * @param vmdeltasize          linked clones delta disk size
+	 * @param vmpersistentdisksize persistent disk size
+	 * @param vmdisposabledisksize disposable disk size
+	 * @param vmlogsize            log size
+	 * @param vmswapsize           vswap size
+	 * @param vmvideoswapsize      video vswap size
 	 * @since 1.0
 	 *
-	 * @return int */
-	public int calculateStorageSize(int vmfullclonesize, int vmdeltasize,
-			int vmpersistentdisksize, int vmdisposabledisksize, int vmlogsize,
-			int vmswapsize, int vmvideoswapsize) {
+	 * @return int
+	 */
+	public int calculateStorageSize(int vmfullclonesize, int vmdeltasize, int vmpersistentdisksize,
+			int vmdisposabledisksize, int vmlogsize, int vmswapsize, int vmvideoswapsize) {
 
-		final int i = vmfullclonesize + vmdeltasize + vmpersistentdisksize
-				+ vmdisposabledisksize + vmlogsize + vmswapsize
-				+ vmvideoswapsize;
+		final int i = vmfullclonesize + vmdeltasize + vmpersistentdisksize + vmdisposabledisksize + vmlogsize
+				+ vmswapsize + vmvideoswapsize;
 
 		return i;
 	}
 
 	/**
-	
-	 * @return the bootIOPS */
+	 * 
+	 * @return the bootIOPS
+	 */
 	public Integer getBootIOPS() {
 		return bootIOPS;
 	}
 
 	/**
-	
-	 * @return the concurrentcount */
+	 * 
+	 * @return the concurrentcount
+	 */
 	public Integer getConcurrentcount() {
 		return concurrentcount;
 	}
 
 	/**
-	
-	 * @return the count */
+	 * 
+	 * @return the count
+	 */
 	public Integer getCount() {
 		return count;
 	}
 
 	/**
-	
-	 * @return the deltareadIOpercent */
+	 * 
+	 * @return the deltareadIOpercent
+	 */
 	public Integer getDeltareadIOpercent() {
 		return deltareadIOpercent;
 	}
 
 	/**
-	
-	 * @return the deltasize */
+	 * 
+	 * @return the deltasize
+	 */
 	public Integer getDeltasize() {
 		return deltasize;
 	}
 
 	/**
-	
-	 * @return the deltasteadystateIOPS */
+	 * 
+	 * @return the deltasteadystateIOPS
+	 */
 	public Integer getDeltasteadystateIOPS() {
 		return deltasteadystateIOPS;
 	}
 
 	/**
-	
-	 * @return the displaycount */
+	 * 
+	 * @return the displaycount
+	 */
 	public Integer getDisplaycount() {
 		return displaycount;
 	}
 
 	/**
-	
-	 * @return the displayresolution */
+	 * 
+	 * @return the displayresolution
+	 */
 	public String getDisplayresolution() {
 		return displayresolution;
 	}
 
 	/**
-	
-	 * @return the disposabledisksize */
+	 * 
+	 * @return the disposabledisksize
+	 */
 	public Integer getDisposabledisksize() {
 		return disposabledisksize;
 	}
 
 	/**
-	
-	 * @return the fullclonesize */
+	 * 
+	 * @return the fullclonesize
+	 */
 	public Integer getFullclonesize() {
 		return fullclonesize;
 	}
 
 	/**
-	
-	 * @return the idenditysize */
+	 * 
+	 * @return the idenditysize
+	 */
 	public Integer getIdenditysize() {
 		return idenditysize;
 	}
 
 	/**
-	
-	 * @return the identitysnapshotsize */
+	 * 
+	 * @return the identitysnapshotsize
+	 */
 	public Integer getIdentitysnapshotsize() {
 		return identitysnapshotsize;
 	}
 
 	/**
-	
-	 * @return the logsize */
+	 * 
+	 * @return the logsize
+	 */
 	public Integer getLogsize() {
 		return logsize;
 	}
 
 	/**
-	 * Retrieve the default log size for virtual machines The value is
-	 * recommended by VMware
+	 * Retrieve the default log size for virtual machines The value is recommended
+	 * by VMware
 	 * 
 	 * @since 1.0
-	
-	 * @return int */
+	 * 
+	 * @return int
+	 */
 	public int getLogSize() {
 		return 100;
 	}
 
 	/**
-	
-	 * @return the memoryoverhead */
+	 * 
+	 * @return the memoryoverhead
+	 */
 	public Integer getMemoryoverhead() {
 		return memoryoverhead;
 	}
@@ -339,12 +347,12 @@ public class vm {
 	 * @param vmvram
 	 * @param vmdisplaycount
 	 * @param vmdisplayresolution
-	
+	 * 
 	 * @since 1.0
-	
-	 * @return int */
-	public int getMemoryOverhead(int vmvcpu, int vmmemory, int vmvram,
-			int vmdisplaycount, String vmdisplayresolution) {
+	 * 
+	 * @return int
+	 */
+	public int getMemoryOverhead(int vmvcpu, int vmmemory, int vmvram, int vmdisplaycount, String vmdisplayresolution) {
 
 		final int vmmemorytmp = (int) Math.round(vmmemory / 1024.0);
 		double vmvcpuvmemoryoverhead = 0;
@@ -353,134 +361,136 @@ public class vm {
 
 		// cpu
 		switch (vmmemorytmp) {
-			case 1 :
-				switch (vmvcpu) {
-					case 1 :
-						vmvcpuvmemoryoverhead = 71.2;
-						break;
-					case 2 :
-						vmvcpuvmemoryoverhead = 107.62;
-						break;
-					default :
-						vmvcpuvmemoryoverhead = 71.2;
-						break;
-				}
+		case 1:
+			switch (vmvcpu) {
+			case 1:
+				vmvcpuvmemoryoverhead = 71.2;
 				break;
-			case 2 :
-				switch (vmvcpu) {
-					case 1 :
-						vmvcpuvmemoryoverhead = 90.23;
-						break;
-					case 2 :
-						vmvcpuvmemoryoverhead = 137.75;
-						break;
-					default :
-						vmvcpuvmemoryoverhead = 90.23;
-						break;
-				}
+			case 2:
+				vmvcpuvmemoryoverhead = 107.62;
 				break;
-			case 4 :
-				switch (vmvcpu) {
-					case 1 :
-						vmvcpuvmemoryoverhead = 128.5;
-						break;
-					case 2 :
-						vmvcpuvmemoryoverhead = 197.99;
-						break;
-					default :
-						vmvcpuvmemoryoverhead = 128.5;
-						break;
-				}
+			default:
+				vmvcpuvmemoryoverhead = 71.2;
 				break;
-			default :
-				switch (vmvcpu) {
-					case 1 :
-						vmvcpuvmemoryoverhead = 71.2;
-						break;
-					case 2 :
-						vmvcpuvmemoryoverhead = 107.62;
-						break;
-					default :
-						vmvcpuvmemoryoverhead = 71.2;
-						break;
-				}
+			}
+			break;
+		case 2:
+			switch (vmvcpu) {
+			case 1:
+				vmvcpuvmemoryoverhead = 90.23;
 				break;
+			case 2:
+				vmvcpuvmemoryoverhead = 137.75;
+				break;
+			default:
+				vmvcpuvmemoryoverhead = 90.23;
+				break;
+			}
+			break;
+		case 4:
+			switch (vmvcpu) {
+			case 1:
+				vmvcpuvmemoryoverhead = 128.5;
+				break;
+			case 2:
+				vmvcpuvmemoryoverhead = 197.99;
+				break;
+			default:
+				vmvcpuvmemoryoverhead = 128.5;
+				break;
+			}
+			break;
+		default:
+			switch (vmvcpu) {
+			case 1:
+				vmvcpuvmemoryoverhead = 71.2;
+				break;
+			case 2:
+				vmvcpuvmemoryoverhead = 107.62;
+				break;
+			default:
+				vmvcpuvmemoryoverhead = 71.2;
+				break;
+			}
+			break;
 		}
 
 		// display
 		if (0 == vmvram) {
 			switch (vmdisplaycount) {
-				case 1 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						vmmvideooverhead = 4.00;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						vmmvideooverhead = 8.00;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						vmmvideooverhead = 16.00;
-					}
-					break;
-				case 2 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						vmmvideooverhead = 12.50;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						vmmvideooverhead = 25.40;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						vmmvideooverhead = 60.00;
-					}
-					break;
-				case 3 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						vmmvideooverhead = 18.75;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						vmmvideooverhead = 38.00;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						vmmvideooverhead = 84.80;
-					}
-					break;
-				case 4 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						vmmvideooverhead = 25.00;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						vmmvideooverhead = 50.60;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						vmmvideooverhead = 109.60;
-					}
-					break;
-				default :
-					if (vmdisplayresolution.equals("1280x800")) {
-						vmmvideooverhead = 6.73;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						vmmvideooverhead = 8.79;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						vmmvideooverhead = 31.25;
-					}
-					break;
+			case 1:
+				if (vmdisplayresolution.equals("1280x800")) {
+					vmmvideooverhead = 4.00;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					vmmvideooverhead = 8.00;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					vmmvideooverhead = 16.00;
+				}
+				break;
+			case 2:
+				if (vmdisplayresolution.equals("1280x800")) {
+					vmmvideooverhead = 12.50;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					vmmvideooverhead = 25.40;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					vmmvideooverhead = 60.00;
+				}
+				break;
+			case 3:
+				if (vmdisplayresolution.equals("1280x800")) {
+					vmmvideooverhead = 18.75;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					vmmvideooverhead = 38.00;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					vmmvideooverhead = 84.80;
+				}
+				break;
+			case 4:
+				if (vmdisplayresolution.equals("1280x800")) {
+					vmmvideooverhead = 25.00;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					vmmvideooverhead = 50.60;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					vmmvideooverhead = 109.60;
+				}
+				break;
+			default:
+				if (vmdisplayresolution.equals("1280x800")) {
+					vmmvideooverhead = 6.73;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					vmmvideooverhead = 8.79;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					vmmvideooverhead = 31.25;
+				}
+				break;
 			}
 		}
 
-		itmp = (int) Math.round(vmvcpuvmemoryoverhead + vmvram
-				+ vmmvideooverhead);
+		itmp = (int) Math.round(vmvcpuvmemoryoverhead + vmvram + vmmvideooverhead);
 
 		return itmp;
 	}
 
 	/**
-	
-	 * @return the memoryreservation */
+	 * 
+	 * @return the memoryreservation
+	 */
 	public Integer getMemoryreservation() {
 		return memoryreservation;
 	}
 
 	/**
-	
-	 * @return the memorysize */
+	 * 
+	 * @return the memorysize
+	 */
 	public Integer getMemorysize() {
 		return memorysize;
 	}
 
 	/**
-	
-	 * @return the memorytotal */
+	 * 
+	 * @return the memorytotal
+	 */
 	public Integer getMemorytotal() {
 		return memorytotal;
 	}
@@ -490,17 +500,19 @@ public class vm {
 	 * 
 	 * @param vmmemory
 	 * @param vmvmemoryoverhead
-	
+	 * 
 	 * @since 1.0
-	
-	 * @return int */
+	 * 
+	 * @return int
+	 */
 	public int getMemoryTotal(int vmmemory, int vmvmemoryoverhead) {
 		return vmmemory + vmvmemoryoverhead;
 	}
 
 	/**
-	
-	 * @return the parentcount */
+	 * 
+	 * @return the parentcount
+	 */
 	public Integer getParentcount() {
 		return parentcount;
 	}
@@ -508,79 +520,90 @@ public class vm {
 	/**
 	 * getParentsize
 	 * 
-	
-	
-	 * @return int */
+	 * 
+	 * 
+	 * @return int
+	 */
 	public int getParentsize() {
 		return parentsize;
 	}
 
 	/**
-	
-	 * @return the persistentdisksize */
+	 * 
+	 * @return the persistentdisksize
+	 */
 	public Integer getPersistentdisksize() {
 		return persistentdisksize;
 	}
 
 	/**
-	
-	 * @return the persistentreadIOpercent */
+	 * 
+	 * @return the persistentreadIOpercent
+	 */
 	public Integer getPersistentreadIOpercent() {
 		return persistentreadIOpercent;
 	}
 
 	/**
-	
-	 * @return the persistentsteadystateIOPS */
+	 * 
+	 * @return the persistentsteadystateIOPS
+	 */
 	public Integer getPersistentsteadystateIOPS() {
 		return persistentsteadystateIOPS;
 	}
 
 	/**
-	
-	 * @return the powerstate */
+	 * 
+	 * @return the powerstate
+	 */
 	public String getPowerstate() {
 		return powerstate;
 	}
 
 	/**
-	
-	 * @return the refreshrate */
+	 * 
+	 * @return the refreshrate
+	 */
 	public Integer getRefreshrate() {
 		return refreshrate;
 	}
 
 	/**
-	
-	 * @return the replicaconcurrentbootcount */
+	 * 
+	 * @return the replicaconcurrentbootcount
+	 */
 	public Integer getReplicaconcurrentbootcount() {
 		return replicaconcurrentbootcount;
 	}
 
 	/**
-	
-	 * @return the replicareadsteadystateIOPS */
+	 * 
+	 * @return the replicareadsteadystateIOPS
+	 */
 	public Integer getReplicareadsteadystateIOPS() {
 		return replicareadsteadystateIOPS;
 	}
 
 	/**
-	
-	 * @return the snapshotcount */
+	 * 
+	 * @return the snapshotcount
+	 */
 	public int getSnapshotcount() {
 		return snapshotcount;
 	}
 
 	/**
-	
-	 * @return the storagesize */
+	 * 
+	 * @return the storagesize
+	 */
 	public Integer getStoragesize() {
 		return storagesize;
 	}
 
 	/**
-	
-	 * @return the storagesizetotal */
+	 * 
+	 * @return the storagesizetotal
+	 */
 	public Double getStoragesizetotal() {
 		return storagesizetotal;
 	}
@@ -590,10 +613,11 @@ public class vm {
 	 * 
 	 * @param vmstoragesize
 	 * @param vmcounttotal
-	
+	 * 
 	 * @since 1.0
-	
-	 * @return Double */
+	 * 
+	 * @return Double
+	 */
 	public Double getStorageSizeTotal(int vmstoragesize, int vmcounttotal) {
 
 		double i = (vmstoragesize * vmcounttotal) / 1048576.0;
@@ -603,8 +627,9 @@ public class vm {
 	}
 
 	/**
-	
-	 * @return the swapsize */
+	 * 
+	 * @return the swapsize
+	 */
 	public Integer getSwapsize() {
 		return swapsize;
 	}
@@ -612,13 +637,13 @@ public class vm {
 	/**
 	 * Calculate virtual desktop vswap size based on memory reservation.
 	 * 
-	 * @param vmmemoryreservation
-	 *            the percent value of memory reservation to be applied
-	 * @param vmmemory
-	 *            virtual desktop base memory
+	 * @param vmmemoryreservation the percent value of memory reservation to be
+	 *                            applied
+	 * @param vmmemory            virtual desktop base memory
 	 * @since 1.0
-	
-	 * @return int */
+	 * 
+	 * @return int
+	 */
 	public int getSwapSize(int vmmemoryreservation, int vmmemory) {
 
 		final double i = (1.0 - (vmmemoryreservation / 100.0)) * vmmemory;
@@ -627,127 +652,129 @@ public class vm {
 	}
 
 	/**
-	
-	 * @return the thinsize */
+	 * 
+	 * @return the thinsize
+	 */
 	public Integer getThinsize() {
 		return thinsize;
 	}
 
 	/**
-	
-	 * @return the vcpucount */
+	 * 
+	 * @return the vcpucount
+	 */
 	public Integer getVcpucount() {
 		return vcpucount;
 	}
 
 	/**
-	
-	 * @return the vcpumhz */
+	 * 
+	 * @return the vcpumhz
+	 */
 	public Integer getVcpumhz() {
 		return vcpumhz;
 	}
 
 	/**
-	
-	 * @return the vcpuoverhead */
+	 * 
+	 * @return the vcpuoverhead
+	 */
 	public Integer getVcpuoverhead() {
 		return vcpuoverhead;
 	}
 
 	/**
-	
-	 * @return the videoswapsize */
+	 * 
+	 * @return the videoswapsize
+	 */
 	public Integer getVideoswapsize() {
 		return videoswapsize;
 	}
 
 	/**
 	 * Calculate the video vswap size for a virtual desktop. This method will
-	 * execute calculations based on number of displays, or if 3D option is
-	 * enabled it will calculate based on the amount of vRAM assigned. vSwap
-	 * values are pre-assigned based on tests with vSphere 5.1.
+	 * execute calculations based on number of displays, or if 3D option is enabled
+	 * it will calculate based on the amount of vRAM assigned. vSwap values are
+	 * pre-assigned based on tests with vSphere 5.1.
 	 * 
-	 * @param vmdisplaynumber
-	 *            number of displays
-	 * @param vmdisplayresolution
-	 *            heightxWidth resolution
-	 * @param vmvram
-	 *            amount of vRam assigned
+	 * @param vmdisplaynumber     number of displays
+	 * @param vmdisplayresolution heightxWidth resolution
+	 * @param vmvram              amount of vRam assigned
 	 * @since 1.0
-	
-	 * @return int */
-	public int getVideoSwapSize(int vmdisplaynumber,
-			String vmdisplayresolution, int vmvram) {
+	 * 
+	 * @return int
+	 */
+	public int getVideoSwapSize(int vmdisplaynumber, String vmdisplayresolution, int vmvram) {
 
 		int i = 0;
 
 		if (0 == vmvram) {
 			// calculation based on displays
 			switch (vmdisplaynumber) {
-				case 1 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						i = 107;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						i = 111;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						i = 203;
-					}
-					break;
-				case 2 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						i = 163;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						i = 190;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						i = 203;
-					}
-					break;
-				case 3 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						i = 207;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						i = 248;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						i = 461;
-					}
-					break;
-				case 4 :
-					if (vmdisplayresolution.equals("1280x800")) {
-						i = 252;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						i = 306;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						i = 589;
-					}
-					break;
-				default :
-					if (vmdisplayresolution.equals("1280x800")) {
-						i = 107;
-					} else if (vmdisplayresolution.equals("1920x1200")) {
-						i = 111;
-					} else if (vmdisplayresolution.equals("2560x1600")) {
-						i = 203;
-					}
-					break;
+			case 1:
+				if (vmdisplayresolution.equals("1280x800")) {
+					i = 107;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					i = 111;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					i = 203;
+				}
+				break;
+			case 2:
+				if (vmdisplayresolution.equals("1280x800")) {
+					i = 163;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					i = 190;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					i = 203;
+				}
+				break;
+			case 3:
+				if (vmdisplayresolution.equals("1280x800")) {
+					i = 207;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					i = 248;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					i = 461;
+				}
+				break;
+			case 4:
+				if (vmdisplayresolution.equals("1280x800")) {
+					i = 252;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					i = 306;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					i = 589;
+				}
+				break;
+			default:
+				if (vmdisplayresolution.equals("1280x800")) {
+					i = 107;
+				} else if (vmdisplayresolution.equals("1920x1200")) {
+					i = 111;
+				} else if (vmdisplayresolution.equals("2560x1600")) {
+					i = 203;
+				}
+				break;
 			}
 		} else if (0 != vmvram) {
 			// calculation based on vRAM(3d)
 			switch (vmvram) {
-				case 64 :
-					i = 1076;
-					break;
-				case 128 :
-					i = 1468;
-					break;
-				case 256 :
-					i = 1468;
-					break;
-				case 512 :
-					i = 1916;
-					break;
-				default :
-					i = 1076;
-					break;
+			case 64:
+				i = 1076;
+				break;
+			case 128:
+				i = 1468;
+				break;
+			case 256:
+				i = 1468;
+				break;
+			case 512:
+				i = 1916;
+				break;
+			default:
+				i = 1076;
+				break;
 			}
 		}
 
@@ -755,34 +782,37 @@ public class vm {
 	}
 
 	/**
-	
-	 * @return the vram */
+	 * 
+	 * @return the vram
+	 */
 	public Integer getVram() {
 		return vram;
 	}
 
 	/**
 	 * Retrieve the default identity disk size for Xen Desktop A unique identity
-	 * disk used to provide each VM with a unique identity The value is
-	 * recommended by Citrix
+	 * disk used to provide each VM with a unique identity The value is recommended
+	 * by Citrix
 	 * 
-	
+	 * 
 	 * @since 2.0
-	
-	 * @return int */
+	 * 
+	 * @return int
+	 */
 	public int getXenIdentitySize() {
 		return 16;
 	}
 
 	/**
 	 * Retrieve the default identity disk size for Xen Desktop A unique identity
-	 * disk used to provide each VM with a unique identity The value is
-	 * recommended by Citrix.
+	 * disk used to provide each VM with a unique identity The value is recommended
+	 * by Citrix.
 	 * 
-	
+	 * 
 	 * @since 2.0
-	
-	 * @return int */
+	 * 
+	 * @return int
+	 */
 	public int getXenIdentitySnapshotSize() {
 		return 24;
 	}
@@ -797,160 +827,141 @@ public class vm {
 	 * @param vmlogsize
 	 * @param vmswapsize
 	 * @param vmvideoswapsize
-	
+	 * 
 	 * @since 2.0
-	
-	 * @return int */
-	public int getXenStorageSize(int vmfullclonesize, int vmdeltasize,
-			int vmidentitysize, int vmidentitysnapshotsize, int vmlogsize,
-			int vmswapsize, int vmvideoswapsize) {
+	 * 
+	 * @return int
+	 */
+	public int getXenStorageSize(int vmfullclonesize, int vmdeltasize, int vmidentitysize, int vmidentitysnapshotsize,
+			int vmlogsize, int vmswapsize, int vmvideoswapsize) {
 
-		final int i = vmfullclonesize + vmdeltasize + vmidentitysize
-				+ vmidentitysnapshotsize + vmlogsize + vmswapsize
+		final int i = vmfullclonesize + vmdeltasize + vmidentitysize + vmidentitysnapshotsize + vmlogsize + vmswapsize
 				+ vmvideoswapsize;
 
 		return i;
 	}
 
 	/**
-	 * @param bootIOPS
-	 *            the bootIOPS to set
+	 * @param bootIOPS the bootIOPS to set
 	 */
 	public void setBootIOPS(Integer bootIOPS) {
 		this.bootIOPS = bootIOPS;
 	}
 
 	/**
-	 * @param concurrentcount
-	 *            the concurrentcount to set
+	 * @param concurrentcount the concurrentcount to set
 	 */
 	public void setConcurrentcount(Integer concurrentcount) {
 		this.concurrentcount = concurrentcount;
 	}
 
 	/**
-	 * @param count
-	 *            the count to set
+	 * @param count the count to set
 	 */
 	public void setCount(Integer count) {
 		this.count = count;
 	}
 
 	/**
-	 * @param deltareadIOpercent
-	 *            the deltareadIOpercent to set
+	 * @param deltareadIOpercent the deltareadIOpercent to set
 	 */
 	public void setDeltareadIOpercent(Integer deltareadIOpercent) {
 		this.deltareadIOpercent = deltareadIOpercent;
 	}
 
 	/**
-	 * @param deltasize
-	 *            the deltasize to set
+	 * @param deltasize the deltasize to set
 	 */
 	public void setDeltasize(Integer deltasize) {
 		this.deltasize = deltasize;
 	}
 
 	/**
-	 * @param deltasteadystateIOPS
-	 *            the deltasteadystateIOPS to set
+	 * @param deltasteadystateIOPS the deltasteadystateIOPS to set
 	 */
 	public void setDeltasteadystateIOPS(Integer deltasteadystateIOPS) {
 		this.deltasteadystateIOPS = deltasteadystateIOPS;
 	}
 
 	/**
-	 * @param displaycount
-	 *            the displaycount to set
+	 * @param displaycount the displaycount to set
 	 */
 	public void setDisplaycount(Integer displaycount) {
 		this.displaycount = displaycount;
 	}
 
 	/**
-	 * @param displayresolution
-	 *            the displayresolution to set
+	 * @param displayresolution the displayresolution to set
 	 */
 	public void setDisplayresolution(String displayresolution) {
 		this.displayresolution = displayresolution;
 	}
 
 	/**
-	 * @param disposabledisksize
-	 *            the disposabledisksize to set
+	 * @param disposabledisksize the disposabledisksize to set
 	 */
 	public void setDisposabledisksize(Integer disposabledisksize) {
 		this.disposabledisksize = disposabledisksize;
 	}
 
 	/**
-	 * @param fullclonesize
-	 *            the fullclonesize to set
+	 * @param fullclonesize the fullclonesize to set
 	 */
 	public void setFullclonesize(Integer fullclonesize) {
 		this.fullclonesize = fullclonesize;
 	}
 
 	/**
-	 * @param idenditysize
-	 *            the idenditysize to set
+	 * @param idenditysize the idenditysize to set
 	 */
 	public void setIdenditysize(Integer idenditysize) {
 		this.idenditysize = idenditysize;
 	}
 
 	/**
-	 * @param identitysnapshotsize
-	 *            the identitysnapshotsize to set
+	 * @param identitysnapshotsize the identitysnapshotsize to set
 	 */
 	public void setIdentitysnapshotsize(Integer identitysnapshotsize) {
 		this.identitysnapshotsize = identitysnapshotsize;
 	}
 
 	/**
-	 * @param logsize
-	 *            the logsize to set
+	 * @param logsize the logsize to set
 	 */
 	public void setLogsize(Integer logsize) {
 		this.logsize = logsize;
 	}
 
 	/**
-	 * @param memoryoverhead
-	 *            the memoryoverhead to set
+	 * @param memoryoverhead the memoryoverhead to set
 	 */
 	public void setMemoryoverhead(Integer memoryoverhead) {
 		this.memoryoverhead = memoryoverhead;
 	}
 
 	/**
-	 * @param memoryreservation
-	 *            the memoryreservation to set
+	 * @param memoryreservation the memoryreservation to set
 	 */
 	public void setMemoryreservation(Integer memoryreservation) {
 		this.memoryreservation = memoryreservation;
 	}
 
 	/**
-	 * @param memorysize
-	 *            the memorysize to set
+	 * @param memorysize the memorysize to set
 	 */
 	public void setMemorysize(Integer memorysize) {
 		this.memorysize = memorysize;
 	}
 
 	/**
-	 * @param memorytotal
-	 *            the memorytotal to set
+	 * @param memorytotal the memorytotal to set
 	 */
 	public void setMemorytotal(Integer memorytotal) {
 		this.memorytotal = memorytotal;
 	}
 
 	/**
-	 * @param parentcount
-	 *            the parentcount to set
+	 * @param parentcount the parentcount to set
 	 */
 	public void setParentcount(Integer parentcount) {
 		this.parentcount = parentcount;
@@ -966,136 +977,119 @@ public class vm {
 	}
 
 	/**
-	 * @param persistentdisksize
-	 *            the persistentdisksize to set
+	 * @param persistentdisksize the persistentdisksize to set
 	 */
 	public void setPersistentdisksize(Integer persistentdisksize) {
 		this.persistentdisksize = persistentdisksize;
 	}
 
 	/**
-	 * @param persistentreadIOpercent
-	 *            the persistentreadIOpercent to set
+	 * @param persistentreadIOpercent the persistentreadIOpercent to set
 	 */
 	public void setPersistentreadIOpercent(Integer persistentreadIOpercent) {
 		this.persistentreadIOpercent = persistentreadIOpercent;
 	}
 
 	/**
-	 * @param persistentsteadystateIOPS
-	 *            the persistentsteadystateIOPS to set
+	 * @param persistentsteadystateIOPS the persistentsteadystateIOPS to set
 	 */
 	public void setPersistentsteadystateIOPS(Integer persistentsteadystateIOPS) {
 		this.persistentsteadystateIOPS = persistentsteadystateIOPS;
 	}
 
 	/**
-	 * @param powerstate
-	 *            the powerstate to set
+	 * @param powerstate the powerstate to set
 	 */
 	public void setPowerstate(String powerstate) {
 		this.powerstate = powerstate;
 	}
 
 	/**
-	 * @param refreshrate
-	 *            the refreshrate to set
+	 * @param refreshrate the refreshrate to set
 	 */
 	public void setRefreshrate(Integer refreshrate) {
 		this.refreshrate = refreshrate;
 	}
 
 	/**
-	 * @param replicaconcurrentbootcount
-	 *            the replicaconcurrentbootcount to set
+	 * @param replicaconcurrentbootcount the replicaconcurrentbootcount to set
 	 */
 	public void setReplicaconcurrentbootcount(Integer replicaconcurrentbootcount) {
 		this.replicaconcurrentbootcount = replicaconcurrentbootcount;
 	}
 
 	/**
-	 * @param replicareadsteadystateIOPS
-	 *            the replicareadsteadystateIOPS to set
+	 * @param replicareadsteadystateIOPS the replicareadsteadystateIOPS to set
 	 */
 	public void setReplicareadsteadystateIOPS(Integer replicareadsteadystateIOPS) {
 		this.replicareadsteadystateIOPS = replicareadsteadystateIOPS;
 	}
 
 	/**
-	 * @param snapshotcount
-	 *            the snapshotcount to set
+	 * @param snapshotcount the snapshotcount to set
 	 */
 	public void setSnapshotcount(int snapshotcount) {
 		this.snapshotcount = snapshotcount;
 	}
 
 	/**
-	 * @param storagesize
-	 *            the storagesize to set
+	 * @param storagesize the storagesize to set
 	 */
 	public void setStoragesize(Integer storagesize) {
 		this.storagesize = storagesize;
 	}
 
 	/**
-	 * @param storagesizetotal
-	 *            the storagesizetotal to set
+	 * @param storagesizetotal the storagesizetotal to set
 	 */
 	public void setStoragesizetotal(Double storagesizetotal) {
 		this.storagesizetotal = storagesizetotal;
 	}
 
 	/**
-	 * @param swapsize
-	 *            the swapsize to set
+	 * @param swapsize the swapsize to set
 	 */
 	public void setSwapsize(Integer swapsize) {
 		this.swapsize = swapsize;
 	}
 
 	/**
-	 * @param thinsize
-	 *            the thinsize to set
+	 * @param thinsize the thinsize to set
 	 */
 	public void setThinsize(Integer thinsize) {
 		this.thinsize = thinsize;
 	}
 
 	/**
-	 * @param vcpucount
-	 *            the vcpucount to set
+	 * @param vcpucount the vcpucount to set
 	 */
 	public void setVcpucount(Integer vcpucount) {
 		this.vcpucount = vcpucount;
 	}
 
 	/**
-	 * @param vcpumhz
-	 *            the vcpumhz to set
+	 * @param vcpumhz the vcpumhz to set
 	 */
 	public void setVcpumhz(Integer vcpumhz) {
 		this.vcpumhz = vcpumhz;
 	}
 
 	/**
-	 * @param vcpuoverhead
-	 *            the vcpuoverhead to set
+	 * @param vcpuoverhead the vcpuoverhead to set
 	 */
 	public void setVcpuoverhead(Integer vcpuoverhead) {
 		this.vcpuoverhead = vcpuoverhead;
 	}
 
 	/**
-	 * @param videoswapsize
-	 *            the videoswapsize to set
+	 * @param videoswapsize the videoswapsize to set
 	 */
 	public void setVideoswapsize(Integer videoswapsize) {
 		this.videoswapsize = videoswapsize;
 	}
 
 	/**
-	 * @param vram
-	 *            the vram to set
+	 * @param vram the vram to set
 	 */
 	public void setVram(Integer vram) {
 		this.vram = vram;
@@ -1103,6 +1097,7 @@ public class vm {
 
 	/**
 	 * Method toString.
+	 * 
 	 * @return String
 	 */
 	@Override

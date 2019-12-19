@@ -40,7 +40,8 @@ public class cluster {
 	 * 
 	 * @param totalhosts
 	 * @param vcclustersize
-	 * @return int */
+	 * @return int
+	 */
 	public static int calcCount(int totalhosts, int vcclustersize) {
 		final Float f = ((float) totalhosts / (float) vcclustersize);
 		final int i = (int) Math.ceil(f); // round up and convert to integer
@@ -51,7 +52,8 @@ public class cluster {
 	 * Calculate HA multiplier
 	 *
 	 * @param vcenterhastate
-	 * @return double */
+	 * @return double
+	 */
 	public static double calcHaMultiplier(Boolean vcenterhastate) {
 		double d = 0;
 		if (vcenterhastate) {
@@ -63,45 +65,45 @@ public class cluster {
 	}
 
 	/**
-	
-	 * @return the count */
+	 * 
+	 * @return the count
+	 */
 	public static int getCount() {
 		return Count;
 	}
 
 	/**
-	
-	 * @return the hamultiplier */
+	 * 
+	 * @return the hamultiplier
+	 */
 	public static double getHamultiplier() {
 		return Hamultiplier;
 	}
 
 	/**
-	
-	 * @return the size */
+	 * 
+	 * @return the size
+	 */
 	public static int getSize() {
 		return Size;
 	}
 
 	/**
-	 * @param count
-	 *            the count to set
+	 * @param count the count to set
 	 */
 	public static void setCount(int count) {
 		cluster.Count = count;
 	}
 
 	/**
-	 * @param hamultiplier
-	 *            the hamultiplier to set
+	 * @param hamultiplier the hamultiplier to set
 	 */
 	public static void setHamultiplier(double hamultiplier) {
 		cluster.Hamultiplier = hamultiplier;
 	}
 
 	/**
-	 * @param size
-	 *            the size to set
+	 * @param size the size to set
 	 */
 	public static void setSize(int size) {
 		cluster.Size = size;
@@ -114,8 +116,9 @@ public class cluster {
 	 */
 	/**
 	 * Method toString.
-	
-	 * @return String */
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Cluster []"; //$NON-NLS-1$
