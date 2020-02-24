@@ -9,6 +9,7 @@ services:
       - MODE=tcp
       - XPRA_HTML=yes
       - DISPLAY=:14
+      - XPRA_PASSWORD=111
     volumes:
       - x11-bridge-pub-keys:/etc/pub-keys
       - x11-bridge-X11-unix:/tmp/.X11-unix
