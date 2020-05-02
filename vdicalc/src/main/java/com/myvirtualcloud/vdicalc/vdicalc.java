@@ -324,7 +324,7 @@ public class vdicalc extends JFrame implements ActionListener, FocusListener {
 	/**
 	 * Field hostinframodelcombovalues.
 	 */
-	static String[] hostinframodelcombovalues = { "Traditional", "Datrium", "Nutanix" };
+	static String[] hostinframodelcombovalues = { "Traditional", "Datrium" };
 	/**
 	 * Field hostinframodelcombo.
 	 */
@@ -594,26 +594,26 @@ public class vdicalc extends JFrame implements ActionListener, FocusListener {
 			vm vmobj = null;
 			pool poolobj = null;
 			switch (i) {
-			case 1:
-				vmobj = vm1obj;
-				poolobj = pool1obj;
-				break;
-			case 2:
-				vmobj = vm2obj;
-				poolobj = pool2obj;
-				break;
-			case 3:
-				vmobj = vm3obj;
-				poolobj = pool3obj;
-				break;
-			case 4:
-				vmobj = vm4obj;
-				poolobj = pool4obj;
-				break;
-			case 5:
-				vmobj = vm5obj;
-				poolobj = pool5obj;
-				break;
+				case 1:
+					vmobj = vm1obj;
+					poolobj = pool1obj;
+					break;
+				case 2:
+					vmobj = vm2obj;
+					poolobj = pool2obj;
+					break;
+				case 3:
+					vmobj = vm3obj;
+					poolobj = pool3obj;
+					break;
+				case 4:
+					vmobj = vm4obj;
+					poolobj = pool4obj;
+					break;
+				case 5:
+					vmobj = vm5obj;
+					poolobj = pool5obj;
+					break;
 			}
 
 			/*
