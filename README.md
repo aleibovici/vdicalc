@@ -1,4 +1,6 @@
-# VDI Calculator
+# VDI Calculator (LEGACY)
+
+This calculator is not maintained anymore and has bee replaced by https://vdicalc.myvirtualcloud.net
 
 ## Synopsis
 
