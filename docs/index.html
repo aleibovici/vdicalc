@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VDI Calculator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1 id="app-title">VDI Calculator</h1>
+      <div class="header-controls">
+        <select id="lang-select" title="Language">
+          <option value="en">English</option>
+          <option value="es">Espa&ntilde;ol</option>
+          <option value="fr">Fran&ccedil;ais</option>
+          <option value="it">Italiano</option>
+          <option value="nl">Nederlands</option>
+          <option value="zh">&#20013;&#25991;</option>
+        </select>
+        <button id="btn-save" title="Save Project">Save</button>
+        <button id="btn-load" title="Load Project">Load</button>
+        <button id="btn-pdf" title="Export PDF">PDF</button>
+        <button id="btn-about" title="About">About</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left Panel: Inputs -->
+    <section class="input-panel">
+      <div class="tabs">
+        <button class="tab active" data-tab="tab-general" data-i18n="tab.general">General</button>
+        <button class="tab" data-tab="tab-desktop" data-i18n="tab.desktop">Desktop</button>
+        <button class="tab" data-tab="tab-host" data-i18n="tab.host">Host</button>
+        <button class="tab" data-tab="tab-infra" data-i18n="tab.infra">Infrastructure</button>
+        <button class="tab" data-tab="tab-storage" data-i18n="tab.storage">Storage</button>
+        <button class="tab" data-tab="tab-iops" data-i18n="tab.iops">IOPS</button>
+      </div>
+
+      <!-- General Tab -->
+      <div id="tab-general" class="tab-content active">
+        <fieldset>
+          <legend data-i18n="section.deployment">Deployment</legend>
+          <div class="form-row">
+            <label for="brokerType" data-i18n="label.brokerType">Broker Type</label>
+            <select id="brokerType">
+              <option value="view">VMware Horizon View</option>
+              <option value="xen">Citrix XenDesktop</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="workloadProfile" data-i18n="label.workloadProfile">Workload Profile</label>
+            <select id="workloadProfile">
+              <option value="custom">Custom</option>
+              <option value="task">Task Worker</option>
+              <option value="office">Office Worker</option>
+              <option value="knowledge">Knowledge Worker</option>
+              <option value="power">Power Worker</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmCount" data-i18n="label.vmCount">Number of Desktops</label>
+            <input type="number" id="vmCount" value="2000" min="1" max="10000">
+          </div>
+          <div class="form-row">
+            <label for="vmConcurrent" data-i18n="label.vmConcurrent">Concurrent Desktops</label>
+            <input type="number" id="vmConcurrent" value="2000" min="1" max="10000">
+          </div>
+          <div class="form-row">
+            <label for="desktopPoolCount" data-i18n="label.desktopPoolCount">Desktop Pools</label>
+            <input type="number" id="desktopPoolCount" value="1" min="1" max="100">
+          </div>
+          <div class="form-row" id="externalSessionsRow">
+            <label for="externalSessions" data-i18n="label.externalSessions">External Sessions</label>
+            <input type="number" id="externalSessions" value="0" min="0" max="10000">
+          </div>
+          <div class="form-row">
+            <label for="vcVmLimit" data-i18n="label.vcVmLimit">vCenter VM Limit</label>
+            <input type="number" id="vcVmLimit" value="2000" min="500" max="10000">
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Desktop Tab -->
+      <div id="tab-desktop" class="tab-content">
+        <fieldset>
+          <legend data-i18n="section.desktopConfig">Desktop Configuration</legend>
+          <div class="form-row">
+            <label for="vmVcpu" data-i18n="label.vmVcpu">Number of vCPU</label>
+            <select id="vmVcpu">
+              <option value="1">1 vCPU</option>
+              <option value="2">2 vCPU</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmVcpuMhz" data-i18n="label.vmVcpuMhz">Average vCPU (MHz)</label>
+            <input type="number" id="vmVcpuMhz" value="500" min="100" max="5000">
+          </div>
+          <div class="form-row">
+            <label for="vmVcpuOverhead" data-i18n="label.vmVcpuOverhead">vCPU Overhead (%)</label>
+            <select id="vmVcpuOverhead">
+              <option value="0">0%</option>
+              <option value="5">5%</option>
+              <option value="10">10%</option>
+              <option value="15">15%</option>
+              <option value="20">20%</option>
+              <option value="25">25%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmMemorySize" data-i18n="label.vmMemorySize">Memory Size (MB)</label>
+            <input type="number" id="vmMemorySize" value="1536" min="512" max="1048576">
+          </div>
+          <div class="form-row">
+            <label for="vmMemoryReservation" data-i18n="label.vmMemoryReservation">Memory Reservation (%)</label>
+            <select id="vmMemoryReservation">
+              <option value="0">0%</option>
+              <option value="25">25%</option>
+              <option value="50">50%</option>
+              <option value="75">75%</option>
+              <option value="100">100%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmPowerState" data-i18n="label.vmPowerState">Desktop State</label>
+            <select id="vmPowerState">
+              <option value="on">Always On</option>
+              <option value="off">Power Off</option>
+              <option value="suspend">Suspend</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmDisplayNumber" data-i18n="label.vmDisplayNumber">Display Number</label>
+            <select id="vmDisplayNumber">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmDisplayResolution" data-i18n="label.vmDisplayResolution">Resolution</label>
+            <select id="vmDisplayResolution">
+              <option value="1280x800">1280x800</option>
+              <option value="1920x1200" selected>1920x1200</option>
+              <option value="2560x1600">2560x1600</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmVram" data-i18n="label.vmVram">3D Graphics (vRAM MB)</label>
+            <select id="vmVram">
+              <option value="0">Disabled</option>
+              <option value="64">64 MB</option>
+              <option value="128">128 MB</option>
+              <option value="256">256 MB</option>
+              <option value="512">512 MB</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="desktopPoolType" data-i18n="label.desktopPoolType">Pool Type</label>
+            <select id="desktopPoolType">
+              <option value="linked">Linked Clone</option>
+              <option value="full">Full Clone</option>
+            </select>
+          </div>
+          <div class="form-row" id="refreshRateRow">
+            <label for="vmRefreshRate" data-i18n="label.vmRefreshRate">Refresh on Logoff (%)</label>
+            <select id="vmRefreshRate">
+              <option value="10">10%</option>
+              <option value="20">20%</option>
+              <option value="30">30%</option>
+              <option value="40">40%</option>
+              <option value="50">50%</option>
+              <option value="60">60%</option>
+              <option value="70">70%</option>
+              <option value="80">80%</option>
+              <option value="90">90%</option>
+              <option value="100">100%</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Host Tab -->
+      <div id="tab-host" class="tab-content">
+        <fieldset>
+          <legend data-i18n="section.hostConfig">Host Configuration</legend>
+          <div class="form-row">
+            <label for="hostSockets" data-i18n="label.hostSockets">Sockets per Host</label>
+            <select id="hostSockets">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="hostCoresPerSocket" data-i18n="label.hostCoresPerSocket">Cores per Socket</label>
+            <select id="hostCoresPerSocket">
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="8" selected>8</option>
+              <option value="10">10</option>
+              <option value="12">12</option>
+              <option value="14">14</option>
+              <option value="16">16</option>
+              <option value="18">18</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="hostVmCore" data-i18n="label.hostVmCore">VMs per Core</label>
+            <select id="hostVmCore">
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="hostSharedMemory" data-i18n="label.hostSharedMemory">Shared Memory / TPS (%)</label>
+            <select id="hostSharedMemory">
+              <option value="0" selected>0%</option>
+              <option value="10">10%</option>
+              <option value="15">15%</option>
+              <option value="20">20%</option>
+              <option value="25">25%</option>
+              <option value="30">30%</option>
+              <option value="35">35%</option>
+              <option value="40">40%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="hostUsedMemory" data-i18n="label.hostUsedMemory">Used Memory (%)</label>
+            <select id="hostUsedMemory">
+              <option value="75">75%</option>
+              <option value="80">80%</option>
+              <option value="85">85%</option>
+              <option value="90">90%</option>
+              <option value="95">95%</option>
+              <option value="100" selected>100%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="hostMemoryOverhead" data-i18n="label.hostMemoryOverhead">Memory Overhead (MB)</label>
+            <input type="number" id="hostMemoryOverhead" value="1024" min="384">
+          </div>
+          <div class="form-row">
+            <label for="hostCbrc" data-i18n="label.hostCbrc">CBRC (MB)</label>
+            <select id="hostCbrc">
+              <option value="0" selected>Disabled</option>
+              <option value="512">512 MB</option>
+              <option value="1024">1024 MB</option>
+              <option value="2048">2048 MB</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Infrastructure Tab -->
+      <div id="tab-infra" class="tab-content">
+        <fieldset>
+          <legend data-i18n="section.infraConfig">Infrastructure Configuration</legend>
+          <div class="form-row">
+            <label for="vcHa" data-i18n="label.vcHa">vCenter Cluster HA</label>
+            <select id="vcHa">
+              <option value="true" selected>Enabled</option>
+              <option value="false">Disabled</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vcClusterSize" data-i18n="label.vcClusterSize">vCenter Cluster Size</label>
+            <select id="vcClusterSize">
+              <option value="4">4</option>
+              <option value="8" selected>8</option>
+              <option value="12">12</option>
+              <option value="16">16</option>
+              <option value="20">20</option>
+              <option value="24">24</option>
+              <option value="32">32</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="backendInfra" data-i18n="label.backendInfra">Backend Infrastructure</label>
+            <select id="backendInfra">
+              <option value="true" selected>Included</option>
+              <option value="false">Excluded</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="hostLocalSwap" data-i18n="label.hostLocalSwap">Local Storage vSwap</label>
+            <select id="hostLocalSwap">
+              <option value="false" selected>Disabled</option>
+              <option value="true">Enabled</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Storage Tab -->
+      <div id="tab-storage" class="tab-content">
+        <fieldset>
+          <legend data-i18n="section.storageConfig">Storage Configuration</legend>
+          <div class="form-row">
+            <label for="vmFullSizeParent" data-i18n="label.vmFullSizeParent">Parent VM Size (MB)</label>
+            <input type="number" id="vmFullSizeParent" value="40960" min="1024" max="2048000">
+          </div>
+          <div class="form-row">
+            <label for="vmThinSizeParent" data-i18n="label.vmThinSizeParent">Parent VM Thin Size (MB)</label>
+            <input type="number" id="vmThinSizeParent" value="35480" min="0">
+          </div>
+          <div class="form-row">
+            <label for="vmPersistentDiskSize" data-i18n="label.vmPersistentDiskSize">Persistent Disk Size (MB)</label>
+            <input type="number" id="vmPersistentDiskSize" value="0" min="0">
+          </div>
+          <div class="form-row">
+            <label for="vmDisposableDiskSize" data-i18n="label.vmDisposableDiskSize">Disposable Disk Size (MB)</label>
+            <input type="number" id="vmDisposableDiskSize" value="0" min="0">
+          </div>
+          <div class="form-row">
+            <label for="vmParentCount" data-i18n="label.vmParentCount">Number of Parent VMs</label>
+            <input type="number" id="vmParentCount" value="1" min="1">
+          </div>
+          <div class="form-row">
+            <label for="poolSnapshotCount" data-i18n="label.poolSnapshotCount">Snapshots per Pool</label>
+            <select id="poolSnapshotCount">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="storageDatastoreVm" data-i18n="label.storageDatastoreVm">Desktops per Datastore</label>
+            <input type="number" id="storageDatastoreVm" value="64" min="1" max="10000">
+          </div>
+          <div class="form-row">
+            <label for="persistentPerDatastore" data-i18n="label.persistentPerDatastore">Persistent per Datastore</label>
+            <input type="number" id="persistentPerDatastore" value="64" min="1" max="10000">
+          </div>
+          <div class="form-row">
+            <label for="storageOverhead" data-i18n="label.storageOverhead">Overhead (%)</label>
+            <select id="storageOverhead">
+              <option value="0">0%</option>
+              <option value="2" selected>2%</option>
+              <option value="5">5%</option>
+              <option value="10">10%</option>
+              <option value="15">15%</option>
+              <option value="20">20%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="storageTiering" data-i18n="label.storageTiering">Replica Datastore</label>
+            <select id="storageTiering">
+              <option value="On" selected>Enabled</option>
+              <option value="Off">Disabled</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="storageDedup" data-i18n="label.storageDedup">Block Dedup Ratio (%)</label>
+            <select id="storageDedup">
+              <option value="0" selected>0%</option>
+              <option value="10">10%</option>
+              <option value="20">20%</option>
+              <option value="30">30%</option>
+              <option value="40">40%</option>
+              <option value="50">50%</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- IOPS Tab -->
+      <div id="tab-iops" class="tab-content">
+        <fieldset>
+          <legend data-i18n="section.iopsConfig">IOPS Configuration</legend>
+          <div class="form-row">
+            <label for="vmReplicaSteadyStateIO" data-i18n="label.vmReplicaSteadyStateIO">Replica Steady State IOPS</label>
+            <input type="number" id="vmReplicaSteadyStateIO" value="1" min="0">
+          </div>
+          <div class="form-row">
+            <label for="vmConcurrentBootCount" data-i18n="label.vmConcurrentBootCount">Concurrent Boot</label>
+            <input type="number" id="vmConcurrentBootCount" value="12" min="1" max="1000">
+          </div>
+          <div class="form-row">
+            <label for="vmBootIO" data-i18n="label.vmBootIO">Boot IOPS</label>
+            <input type="number" id="vmBootIO" value="600" min="1">
+          </div>
+          <div class="form-row">
+            <label for="vmDeltaIO" data-i18n="label.vmDeltaIO">Delta Steady State IOPS</label>
+            <input type="number" id="vmDeltaIO" value="6" min="1">
+          </div>
+          <div class="form-row">
+            <label for="vmDeltaReadIO" data-i18n="label.vmDeltaReadIO">Delta Read IOPS (%)</label>
+            <select id="vmDeltaReadIO">
+              <option value="10">10%</option>
+              <option value="20" selected>20%</option>
+              <option value="30">30%</option>
+              <option value="40">40%</option>
+              <option value="50">50%</option>
+              <option value="60">60%</option>
+              <option value="70">70%</option>
+              <option value="80">80%</option>
+              <option value="90">90%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="deltaRaidType" data-i18n="label.deltaRaidType">Delta RAID Type</label>
+            <select id="deltaRaidType">
+              <option value="0">RAID 0</option>
+              <option value="5">RAID 5</option>
+              <option value="6">RAID 6</option>
+              <option value="10" selected>RAID 10</option>
+              <option value="DP">RAID DP</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="vmPersistentIO" data-i18n="label.vmPersistentIO">Persistent Steady State IOPS</label>
+            <input type="number" id="vmPersistentIO" value="0" min="0">
+          </div>
+          <div class="form-row">
+            <label for="vmPersistentReadIO" data-i18n="label.vmPersistentReadIO">Persistent Read IOPS (%)</label>
+            <select id="vmPersistentReadIO">
+              <option value="10">10%</option>
+              <option value="20" selected>20%</option>
+              <option value="30">30%</option>
+              <option value="40">40%</option>
+              <option value="50">50%</option>
+              <option value="60">60%</option>
+              <option value="70">70%</option>
+              <option value="80">80%</option>
+              <option value="90">90%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="persistentRaidType" data-i18n="label.persistentRaidType">Persistent RAID Type</label>
+            <select id="persistentRaidType">
+              <option value="0">RAID 0</option>
+              <option value="5">RAID 5</option>
+              <option value="6">RAID 6</option>
+              <option value="10" selected>RAID 10</option>
+              <option value="DP">RAID DP</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="storageCacheRead" data-i18n="label.storageCacheRead">Cache Read Ratio (%)</label>
+            <select id="storageCacheRead">
+              <option value="0" selected>0%</option>
+              <option value="10">10%</option>
+              <option value="20">20%</option>
+              <option value="30">30%</option>
+              <option value="40">40%</option>
+              <option value="50">50%</option>
+              <option value="60">60%</option>
+              <option value="70">70%</option>
+              <option value="80">80%</option>
+              <option value="90">90%</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="storageCacheWrite" data-i18n="label.storageCacheWrite">Cache Write Ratio (%)</label>
+            <select id="storageCacheWrite">
+              <option value="0" selected>0%</option>
+              <option value="10">10%</option>
+              <option value="20">20%</option>
+              <option value="30">30%</option>
+              <option value="40">40%</option>
+              <option value="50">50%</option>
+              <option value="60">60%</option>
+              <option value="70">70%</option>
+              <option value="80">80%</option>
+              <option value="90">90%</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <!-- Right Panel: Results -->
+    <section class="results-panel">
+      <h2 data-i18n="section.results">Results</h2>
+
+      <div class="result-group">
+        <h3 data-i18n="section.compute">Compute</h3>
+        <div class="result-row"><span data-i18n="result.hostCount">Number of Hosts</span><span id="res-hostCount" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.coresPerHost">Cores per Host</span><span id="res-coresPerHost" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.vmsPerHost">VMs per Host</span><span id="res-vmsPerHost" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.avgHostCpu">Avg. Host CPU (MHz)</span><span id="res-avgHostCpu" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.hostMemNoTPS">Host Memory - No TPS (GB)</span><span id="res-hostMemNoTPS" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.hostMemTPS">Host Memory - TPS (GB)</span><span id="res-hostMemTPS" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.localDisk">Local Disk (GB)</span><span id="res-localDisk" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.clusters">Clusters</span><span id="res-clusters" class="result-value">0</span></div>
+      </div>
+
+      <div class="result-group">
+        <h3 data-i18n="section.storageCapacity">Storage Capacity</h3>
+        <div class="result-row"><span id="lbl-parentCapacity" data-i18n="result.parentCapacity">Parent Capacity (TB)</span><span id="res-parentCapacity" class="result-value">0</span></div>
+        <div class="result-row"><span id="lbl-replicaCapacity" data-i18n="result.replicaCapacity">Replica (TB)</span><span id="res-replicaCapacity" class="result-value">0</span></div>
+        <div class="result-row"><span id="lbl-cloneCapacity" data-i18n="result.cloneCapacity">Clone Capacity (TB)</span><span id="res-cloneCapacity" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.persistentCapacity">Persistent Capacity (TB)</span><span id="res-persistentCapacity" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.disposableCapacity">Disposable Disk (TB)</span><span id="res-disposableCapacity" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.localSwapCapacity">Local vSwap Disk (TB)</span><span id="res-localSwapCapacity" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.swapReduction">Swap Reduction (TB)</span><span id="res-swapReduction" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.suspendCapacity">Suspended VMs (TB)</span><span id="res-suspendCapacity" class="result-value">0</span></div>
+        <div class="result-row total"><span data-i18n="result.totalCapacity">Total Capacity (TB)</span><span id="res-totalCapacity" class="result-value">0</span></div>
+      </div>
+
+      <div class="result-group">
+        <h3 data-i18n="section.datastores">Datastores</h3>
+        <div class="result-row"><span data-i18n="result.datastoreCount">Datastores</span><span id="res-datastoreCount" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.datastoreSize">Datastore Size (GB)</span><span id="res-datastoreSize" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.persistentDsCount">Persistent Datastores</span><span id="res-persistentDsCount" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.persistentDsSize">Persistent Datastore Size (GB)</span><span id="res-persistentDsSize" class="result-value">0</span></div>
+      </div>
+
+      <div class="result-group">
+        <h3 data-i18n="section.iopsResults">IOPS</h3>
+        <div class="result-row"><span data-i18n="result.replicaFrontendIOPS">Replica Frontend IOPS</span><span id="res-replicaFrontendIOPS" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.replicaBackendIOPS">Replica Backend IOPS</span><span id="res-replicaBackendIOPS" class="result-value">0</span></div>
+        <div class="result-row"><span id="lbl-cloneFrontendIOPS" data-i18n="result.cloneFrontendIOPS">Clone Frontend IOPS</span><span id="res-cloneFrontendIOPS" class="result-value">0</span></div>
+        <div class="result-row"><span id="lbl-cloneBackendIOPS" data-i18n="result.cloneBackendIOPS">Clone Backend IOPS</span><span id="res-cloneBackendIOPS" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.persistentFrontendIOPS">Persistent Frontend IOPS</span><span id="res-persistentFrontendIOPS" class="result-value">0</span></div>
+        <div class="result-row"><span data-i18n="result.persistentBackendIOPS">Persistent Backend IOPS</span><span id="res-persistentBackendIOPS" class="result-value">0</span></div>
+        <div class="result-row total"><span data-i18n="result.totalFrontendIOPS">Total Frontend IOPS</span><span id="res-totalFrontendIOPS" class="result-value">0</span></div>
+        <div class="result-row total"><span data-i18n="result.totalBackendIOPS">Total Backend IOPS</span><span id="res-totalBackendIOPS" class="result-value">0</span></div>
+      </div>
+
+      <div class="result-group" id="infra-results">
+        <h3 data-i18n="section.infraResults">Infrastructure</h3>
+        <div class="result-row"><span data-i18n="result.vcCount">vCenter Servers</span><span id="res-vcCount" class="result-value">0</span></div>
+        <div class="result-row" id="row-csCount"><span data-i18n="result.csCount">Connection Servers</span><span id="res-csCount" class="result-value">0</span></div>
+        <div class="result-row" id="row-ssCount"><span data-i18n="result.ssCount">Security Servers</span><span id="res-ssCount" class="result-value">0</span></div>
+        <div class="result-row" id="row-ddcCount"><span data-i18n="result.ddcCount">Delivery Controllers</span><span id="res-ddcCount" class="result-value">0</span></div>
+        <div class="result-row" id="row-infraMemory"><span data-i18n="result.infraMemory">Infra Memory (GB)</span><span id="res-infraMemory" class="result-value">0</span></div>
+        <div class="result-row" id="row-infraStorage"><span data-i18n="result.infraStorage">Infra Storage (TB)</span><span id="res-infraStorage" class="result-value">0</span></div>
+        <div class="result-row" id="row-infraVcpu"><span data-i18n="result.infraVcpu">Infra vCPU</span><span id="res-infraVcpu" class="result-value">0</span></div>
+      </div>
+
+      <div id="warnings" class="warnings"></div>
+    </section>
+  </main>
+
+  <!-- About Modal -->
+  <div id="about-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2>VDI Calculator</h2>
+      <p><strong>Created by:</strong> Andre Leibovici</p>
+      <p>The author does not guarantee the results of the calculations. Calculations are based on best practices and the author's own field experience. Use at your own risk.</p>
+      <p><strong>Special Contributions by:</strong> Frank Fan, Javier Larrea, Emmanuel Bernard, Fabrizio de Luca, Kees Baggerman</p>
+      <p>Licensed under the Apache License, Version 2.0</p>
+      <p><em>Refactored for GitHub Pages - all calculations run client-side in the browser.</em></p>
+    </div>
+  </div>
+
+  <input type="file" id="file-input" accept=".json" style="display:none">
+
+  <script src="js/i18n.js"></script>
+  <script src="js/vdicalc.js"></script>
+</body>
+</html>
